@@ -212,7 +212,7 @@ Once activated, your command prompt will change to show the virtual environment 
 ### **7.4** Install Required Libraries
 
 ```cmd
-pip install -r requirements.txt
+pip install pandas pyarrow fastparquet
 ```
 
 ---

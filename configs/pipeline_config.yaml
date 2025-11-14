@@ -1,0 +1,80 @@
+# ADE Data Lake Pipeline Configuration
+
+pipeline:
+  name: "Customer Data Lake Pipeline"
+  version: "1.0.0"
+  environment: "development"
+
+# Data paths
+data:
+  bronze:
+    input_path: "data/bronze/customers_raw.csv"
+    description: "Raw, unprocessed customer data"
+  
+  silver:
+    output_path: "data/silver"
+    description: "Cleaned and standardized customer data"
+    formats: ["csv", "parquet"]
+  
+  gold:
+    output_path: "data/gold"
+    description: "Aggregated, analytics-ready customer insights"
+    formats: ["csv", "parquet"]
+
+# Bronze to Silver transformation rules
+bronze_to_silver:
+  cleaning_rules:
+    - rule: "Remove null values"
+      target_columns: ["name"]
+    
+    - rule: "Standardize text format"
+      target_columns: ["name"]
+      format: "title_case"
+    
+    - rule: "Filter by salary threshold"
+      target_column: "salary"
+      min_value: 50000
+    
+    - rule: "Remove duplicates"
+      all_columns: true
+
+# Silver to Gold aggregations
+silver_to_gold:
+  aggregations:
+    group_by: "city"
+    metrics:
+      - name: "avg_salary"
+        column: "salary"
+        function: "mean"
+      
+      - name: "max_salary"
+        column: "salary"
+        function: "max"
+      
+      - name: "min_salary"
+        column: "salary"
+        function: "min"
+      
+      - name: "customer_count"
+        column: "id"
+        function: "count"
+  
+  sorting:
+    column: "avg_salary"
+    order: "descending"
+
+# Logging configuration
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+
+# Azure configuration (optional)
+azure:
+  enabled: false
+  storage_account: "adepipeline110"
+  containers:
+    bronze: "bronze"
+    silver: "silver"
+    gold: "gold"
+  # Credentials should be stored in environment variables, not in config
