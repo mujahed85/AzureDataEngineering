@@ -39,7 +39,10 @@ This is EXACTLY what Azure Data Engineers do in real projects.
 
 # 🚀 **BRONZE → SILVER → GOLD (Full Workflow in One Go)**
 
-Azure CLI + Python ● Windows 11 ● Azure Free Trial
+## ● Windows 11 ●
+### Azure CLI(Command Prompt - cmd.exe)
+### Python and PIP and VirtualEnv(Create, Activate,  Install, Deactivate)
+###  Azure Free Trial
 
 ---
 
@@ -120,7 +123,7 @@ az storage container create --name gold   --account-name adepipeline110 --accoun
 Create folders:
 
 ```cmd
-az storage fs directory create -f bronze -n "customers" --account-name adepipeline110
+az storage fs directory create -f bronze -n "customers" --account-name adepipeline110 --account-key <KEY>
 az storage fs directory create -f silver -n "customers" --account-name adepipeline110
 az storage fs directory create -f gold   -n "customers" --account-name adepipeline110
 ```
@@ -136,7 +139,7 @@ az storage fs file upload ^
  --account-name adepipeline110 ^
  --file-system bronze ^
  --path "customers/customers_raw.csv" ^
- --source "customers_raw.csv"
+ --source "bronze_files/customers_raw.csv"
 ```
 
 ---
@@ -154,13 +157,7 @@ az storage fs file list ^
   --file-system bronze
 ```
 
-## **6.2** Step 2: Create Folder to Land data
-
-```cmd
-    mkdir bronze_files
-```
-
-## **6.3** Step 3: Download bronze file
+## **6.2** Step 3: Download bronze file
 
 ```cmd
 az storage fs file download ^
@@ -182,13 +179,15 @@ az storage fs file download ^
 In your command prompt, install `virtualenv` using pip:
 
 ```cmd
+python.exe -m pip install --upgrade pip
+
 pip install virtualenv
 ```
 
 ### **7.2** Create a New Virtual Environment
 
 ```cmd
-virtualenv venv
+virtualenv .venv
 ```
 
 ### **7.3** Activate Virtual Environment
@@ -198,7 +197,7 @@ Activate the virtual environment.
 * On Windows:
 
 ```cmd
-.\venv\Scripts\activate
+.venv\Scripts\activate
 ```
 
 * On macOS/Linux:
@@ -293,10 +292,13 @@ az storage fs file upload ^
 # **9. PART 8 — PYTHON TRANSFORMATION: SILVER → GOLD**
 
 Gold layer = aggregated, analytics-ready
+
 Example transformation:
 
 ✔ **9.1** Average salary by city
+
 ✔ **9.2** Count of customers
+
 ✔ **9.3** Highest salary per city
 
 ---
