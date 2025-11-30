@@ -1,0 +1,9 @@
+{
+	"name": "adf-mujahed-dp-v2",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "7cbbbc59-706b-4bb0-9867-416635651bca",
+		"tenantId": "72e4c364-cf92-4347-9979-5c7a764846f3"
+	}
+}
