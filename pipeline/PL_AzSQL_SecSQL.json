@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "PL_AzSQL_SecSQL",
 	"properties": {
 		"activities": [
 			{
@@ -16,15 +16,9 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "DelimitedTextSource",
-						"storeSettings": {
-							"type": "AzureBlobFSReadSettings",
-							"recursive": true,
-							"enablePartitionDiscovery": false
-						},
-						"formatSettings": {
-							"type": "DelimitedTextReadSettings"
-						}
+						"type": "AzureSqlSource",
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
 					},
 					"sink": {
 						"type": "AzureSqlSink",
@@ -43,13 +37,13 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "DS_Src_Gen2",
+						"referenceName": "DS_Snk_AzSQL",
 						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_Snk_AzSQL",
+						"referenceName": "DS_SQL_Employees",
 						"type": "DatasetReference"
 					}
 				]
