@@ -7,9 +7,25 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf2-pipeline"
 		},
+		"LS_AzSQL_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AzSQL'"
+		},
 		"LS_Gen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_Gen2'"
+		},
+		"LS_AzSQL_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "serverdataops.database.windows.net"
+		},
+		"LS_AzSQL_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "primarydbdataops"
+		},
+		"LS_AzSQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azsqladmin"
 		},
 		"LS_Gen2_properties_typeProperties_url": {
 			"type": "string",
@@ -20,6 +36,28 @@
 		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
 	},
 	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/LS_AzSQL')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"server": "[parameters('LS_AzSQL_properties_typeProperties_server')]",
+					"database": "[parameters('LS_AzSQL_properties_typeProperties_database')]",
+					"encrypt": "mandatory",
+					"trustServerCertificate": false,
+					"authenticationType": "SQL",
+					"userName": "[parameters('LS_AzSQL_properties_typeProperties_userName')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('LS_AzSQL_password')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
 		{
 			"name": "[concat(parameters('factoryName'), '/LS_Gen2')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",

@@ -5,8 +5,20 @@
 		"factoryName": {
 			"value": "adf2-pipeline"
 		},
+		"LS_AzSQL_password": {
+			"value": ""
+		},
 		"LS_Gen2_accountKey": {
 			"value": ""
+		},
+		"LS_AzSQL_properties_typeProperties_server": {
+			"value": "serverdataops.database.windows.net"
+		},
+		"LS_AzSQL_properties_typeProperties_database": {
+			"value": "primarydbdataops"
+		},
+		"LS_AzSQL_properties_typeProperties_userName": {
+			"value": "azsqladmin"
 		},
 		"LS_Gen2_properties_typeProperties_url": {
 			"value": "https://samujahed06dec.dfs.core.windows.net/"
