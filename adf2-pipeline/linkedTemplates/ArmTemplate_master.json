@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'LS_AzSQL'"
 		},
+		"LS_AzSQL_Secondary_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_AzSQL_Secondary'"
+		},
 		"LS_Gen2_accountKey": {
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'LS_Gen2'"
@@ -24,6 +28,18 @@
 			"defaultValue": "primarydbdataops"
 		},
 		"LS_AzSQL_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "azsqladmin"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "serverdataops.database.windows.net"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "secondarydbdataops"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_userName": {
 			"type": "string",
 			"defaultValue": "azsqladmin"
 		},
@@ -61,6 +77,9 @@
 					"LS_AzSQL_password": {
 						"value": "[parameters('LS_AzSQL_password')]"
 					},
+					"LS_AzSQL_Secondary_password": {
+						"value": "[parameters('LS_AzSQL_Secondary_password')]"
+					},
 					"LS_Gen2_accountKey": {
 						"value": "[parameters('LS_Gen2_accountKey')]"
 					},
@@ -72,6 +91,15 @@
 					},
 					"LS_AzSQL_properties_typeProperties_userName": {
 						"value": "[parameters('LS_AzSQL_properties_typeProperties_userName')]"
+					},
+					"LS_AzSQL_Secondary_properties_typeProperties_server": {
+						"value": "[parameters('LS_AzSQL_Secondary_properties_typeProperties_server')]"
+					},
+					"LS_AzSQL_Secondary_properties_typeProperties_database": {
+						"value": "[parameters('LS_AzSQL_Secondary_properties_typeProperties_database')]"
+					},
+					"LS_AzSQL_Secondary_properties_typeProperties_userName": {
+						"value": "[parameters('LS_AzSQL_Secondary_properties_typeProperties_userName')]"
 					},
 					"LS_Gen2_properties_typeProperties_url": {
 						"value": "[parameters('LS_Gen2_properties_typeProperties_url')]"

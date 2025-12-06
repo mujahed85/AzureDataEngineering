@@ -8,6 +8,9 @@
 		"LS_AzSQL_password": {
 			"value": ""
 		},
+		"LS_AzSQL_Secondary_password": {
+			"value": ""
+		},
 		"LS_Gen2_accountKey": {
 			"value": ""
 		},
@@ -18,6 +21,15 @@
 			"value": "primarydbdataops"
 		},
 		"LS_AzSQL_properties_typeProperties_userName": {
+			"value": "azsqladmin"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_server": {
+			"value": "serverdataops.database.windows.net"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_database": {
+			"value": "secondarydbdataops"
+		},
+		"LS_AzSQL_Secondary_properties_typeProperties_userName": {
 			"value": "azsqladmin"
 		},
 		"LS_Gen2_properties_typeProperties_url": {
