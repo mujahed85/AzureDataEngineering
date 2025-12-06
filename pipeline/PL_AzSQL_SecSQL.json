@@ -17,6 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
+						"sqlReaderQuery": "SELECT  FirstName, LastName, Email, Phone, DateOfBirth FROM [dbo].[Customers]",
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
 					},
